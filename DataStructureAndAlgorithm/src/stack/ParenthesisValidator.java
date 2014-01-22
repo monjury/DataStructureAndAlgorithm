@@ -14,7 +14,7 @@ public class ParenthesisValidator {
 			if (isOpen(input.charAt(i))) {
 				stack.push(input.charAt(i));
 			}
-			else {
+			else if (isClose(input.charAt(i))) {
 				try {
 					Character open = stack.pop();
 					if(input.charAt(i) != getClosing(open)) {
@@ -27,6 +27,10 @@ public class ParenthesisValidator {
 					break;
 				}
 			}
+			else {
+				isValid = false;
+				break;
+			}
 		}
 		if (stack.size() != 0) {
 			isValid = false;
@@ -36,6 +40,13 @@ public class ParenthesisValidator {
 
 	private static boolean isOpen(Character single) {
 		if (single == '(' || single == '{' || single == '[' || single == '<') {
+			return true;
+		}
+		return false;
+	}
+	
+	private static boolean isClose(Character single) {
+		if (single == ')' || single == '}' || single == ']' || single == '>') {
 			return true;
 		}
 		return false;
@@ -79,6 +90,8 @@ public class ParenthesisValidator {
 		ParenthesisValidator.validate("()()(((())))"); // VALID
 		
 		ParenthesisValidator.validate("[[[]]()()(){()[{}]{{<>}<><><>}}]"); // VALID
+		
+		ParenthesisValidator.validate("[[[]]()()(){()[{}]{{<>}**<><><>}}]"); // INVALID
 
 	}
 }
