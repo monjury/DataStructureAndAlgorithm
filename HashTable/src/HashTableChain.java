@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class HashTableChain<K, V> extends HashTable<K, V> {
@@ -9,6 +10,14 @@ public class HashTableChain<K, V> extends HashTable<K, V> {
 		Entry<K, V> entry = new Entry<K, V>(key, value);
 		if(table[location] != null) {
 			LinkedList<Entry<K, V>> linkedList = table[location];
+			Iterator<Entry<K, V>> iterator = linkedList.iterator();
+			while(iterator.hasNext()) {
+				Entry<K, V> currentEntry = iterator.next();
+				if(currentEntry != null && key.equals(currentEntry.getKey())) {
+					currentEntry.setValue(value);
+					return;
+				}
+			}
 			linkedList.addLast(entry);
 		}
 		else if(size < capacity) { // table[location] == null

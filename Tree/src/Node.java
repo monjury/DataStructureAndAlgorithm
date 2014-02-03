@@ -6,6 +6,7 @@ public class Node<E> implements Serializable {
 	private E data;
 	private Node<E> left;
 	private Node<E> right;
+	private boolean isVisited;
 
 	public Node(E data) {
 		this.data = data;
@@ -39,5 +40,13 @@ public class Node<E> implements Serializable {
 
 	public void setRight(Node<E> right) {
 		this.right = right;
+	}
+
+	public boolean isVisited() {
+		return isVisited;
+	}
+
+	public void setVisited(boolean isVisited) {
+		this.isVisited = isVisited;
 	}
 }
