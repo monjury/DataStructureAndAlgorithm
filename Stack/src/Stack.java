@@ -32,6 +32,9 @@ public class Stack<E> {
 	}
 	
 	public E peek() {
+		if(top < 0) {
+			throw new EmptyStackException();
+		}
 		return stack[top];
 	}
 	
