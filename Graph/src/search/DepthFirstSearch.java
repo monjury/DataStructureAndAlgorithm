@@ -18,9 +18,9 @@ public class DepthFirstSearch<E> {
 			Node<E> next = null;
 			List<Node<E>> neighbors = stack.peek().getNeighbors();
 			if (neighbors != null) {
-				for (int i = 0; i < neighbors.size(); i++) {
-					if (!visited.contains(neighbors.get(i))) {
-						next = neighbors.get(i);
+				for (Node<E> neighbor : neighbors) {
+					if (!visited.contains(neighbor)) {
+						next = neighbor;
 						break;
 					}
 				}

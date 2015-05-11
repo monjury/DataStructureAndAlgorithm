@@ -1,7 +1,6 @@
 package search;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Stack;
 
 import representation.Node;
@@ -29,21 +28,18 @@ public class DepthFirstSearchAnalysed<E> {
 			Node<E> next = nextUnvisitedNeighbor(stack.peek());
 			if (next != null) {
 				visit(next);
-			} 
-			else {
+			} else {
 				stack.pop();
 			}
 		}
 	}
 
-	// Look at top of stack and all unvisited neighbors Visit first unvisited neighbor
+	// Look at top of stack and all unvisited neighbors Visit first unvisited
+	// neighbor
 	private Node<E> nextUnvisitedNeighbor(Node<E> node) {
-		List<Node<E>> neighbors = node.getNeighbors();
-		if(neighbors != null) {
-			for(int i = 0; i < neighbors.size(); i++) {
-				if(!visited.contains(neighbors.get(i))) {
-					return neighbors.get(i);
-				}
+		for (Node<E> neighbor : node.getNeighbors()) {
+			if (!visited.contains(neighbor)) {
+				return neighbor;
 			}
 		}
 		return null;
@@ -53,6 +49,10 @@ public class DepthFirstSearchAnalysed<E> {
 	private void visit(Node<E> node) {
 		stack.push(node);
 		visited.add(node);
-		System.out.println("DepthFirstSearch.visit()" + node.getData());
+		doSomething(node);
+	}
+	
+	private void doSomething(Node<E> node) {
+		System.out.println(node.getData());
 	}
 }
