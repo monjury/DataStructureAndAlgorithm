@@ -16,7 +16,7 @@ public class MergeSort {
 		}
 	}
 
-	private void merge(int[] input, int begin, int mid, int end) {
+	private int[] merge(int[] input, int begin, int mid, int end) {
 		int[] temp = new int[end - begin + 1];
 		int left = begin;
 		int right = mid + 1;
@@ -31,22 +31,19 @@ public class MergeSort {
 			}
 			k++;
 		}
-		if (left <= mid) {
-			while (left <= mid) {
-				temp[k] = input[left];
-				left++;
-				k++;
-			}
-
-		} else {
-			while (right <= end) {
-				temp[k] = input[right];
-				right++;
-				k++;
-			}
+		while (left <= mid) {
+			temp[k] = input[left];
+			left++;
+			k++;
+		}
+		while (right <= end) {
+			temp[k] = input[right];
+			right++;
+			k++;
 		}
 		for (int i = 0; i < temp.length; i++) {
 			input[begin + i] = temp[i];
 		}
+		return temp;
 	}
 }
