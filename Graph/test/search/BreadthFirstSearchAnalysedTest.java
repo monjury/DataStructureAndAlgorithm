@@ -10,9 +10,9 @@ import org.junit.Test;
 
 import representation.Node;
 
-public class BreadthFirstSearchTest {
+public class BreadthFirstSearchAnalysedTest {
 
-	protected BreadthFirstSearch<Character> bfs;
+	protected BreadthFirstSearchAnalysed<Character> bfs;
 	protected Node<Character> a;
 	protected Node<Character> b;
 	protected Node<Character> c;
@@ -24,7 +24,7 @@ public class BreadthFirstSearchTest {
 
 	@Before
 	public void setUp() {
-		bfs = new BreadthFirstSearch<Character>();
+		bfs = new BreadthFirstSearchAnalysed<Character>();
 		a = new Node<Character>('A');
 		b = new Node<Character>('B');
 		c = new Node<Character>('C');

@@ -1,18 +1,15 @@
 package search;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import representation.Node;
 
-public class BreadthFirstSearchTest {
+public class BreadthFirstSearchOldTest {
 
-	protected BreadthFirstSearch<Character> bfs;
+	protected BreadthFirstSearchOld<Character> bfs;
 	protected Node<Character> a;
 	protected Node<Character> b;
 	protected Node<Character> c;
@@ -24,7 +21,7 @@ public class BreadthFirstSearchTest {
 
 	@Before
 	public void setUp() {
-		bfs = new BreadthFirstSearch<Character>();
+		bfs = new BreadthFirstSearchOld<Character>();
 		a = new Node<Character>('A');
 		b = new Node<Character>('B');
 		c = new Node<Character>('C');
@@ -46,16 +43,5 @@ public class BreadthFirstSearchTest {
 		g.addNeighbors(Arrays.asList(a, e));
 		h.addNeighbors(Arrays.asList(c));
 		bfs.traverse(a);
-		List<Node<Character>> actual = bfs.result;
-		List<Node<Character>> expected = new ArrayList<Node<Character>>();
-		expected.add(a);
-		expected.add(b);
-		expected.add(d);
-		expected.add(g);
-		expected.add(e);
-		expected.add(f);
-		expected.add(c);
-		expected.add(h);
-		Assert.assertEquals(expected, actual);
 	}
 }

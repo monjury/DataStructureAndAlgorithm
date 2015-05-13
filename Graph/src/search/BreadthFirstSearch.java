@@ -1,7 +1,9 @@
 package search;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -9,25 +11,28 @@ import representation.Node;
 
 public class BreadthFirstSearch<E> {
 
+	private Queue<Node<E>> queue = new LinkedList<Node<E>>();
+	private Set<Node<E>> visited = new HashSet<Node<E>>();
+	public List<Node<E>> result = new ArrayList<Node<E>>();
+
 	public void traverse(Node<E> start) {
-		Set<Node<E>> visited = new HashSet<Node<E>>();
-		Queue<Node<E>> queue = new LinkedList<Node<E>>();
 		queue.add(start);
-		Node<E> current = null;
+		visited.add(start);
+		doSomething(start);
 		while (queue.size() > 0) {
-			current = queue.peek();
-			if (!visited.contains(current)) {
-				visited.add(current);
-				doSomething(current);
-				for (Node<E> neighbor : current.getNeighbors()) {
+			Node<E> current = queue.poll();
+			for (Node<E> neighbor : current.getNeighbors()) {
+				if (!visited.contains(neighbor)) {
 					queue.add(neighbor);
+					visited.add(neighbor);
+					doSomething(neighbor);
 				}
 			}
-			queue.poll();
 		}
 	}
 
-	protected void doSomething(Node<E> node) {
-		System.out.print(node.getData().toString() + "  ");
+	private void doSomething(Node<E> node) {
+		result.add(node);
+		System.out.println(node.getData());
 	}
 }

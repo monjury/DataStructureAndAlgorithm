@@ -17,12 +17,10 @@ public class DepthFirstSearch<E> {
 		while (!stack.isEmpty()) {
 			Node<E> next = null;
 			List<Node<E>> neighbors = stack.peek().getNeighbors();
-			if (neighbors != null) {
-				for (Node<E> neighbor : neighbors) {
-					if (!visited.contains(neighbor)) {
-						next = neighbor;
-						break;
-					}
+			for (Node<E> neighbor : neighbors) {
+				if (!visited.contains(neighbor)) {
+					next = neighbor;
+					break;
 				}
 			}
 			if (next != null) {
