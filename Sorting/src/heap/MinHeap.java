@@ -25,7 +25,23 @@ public class MinHeap extends Heap {
 
 	@Override
 	public void removeRoot() {
-		// TODO Auto-generated method stub
-		
+		heap[0] = heap[size - 1];
+		heap[size - 1] = 0;
+		size--;
+		int currentIndex = 0;
+		int leftChildIndex = getLeftChildIndex(currentIndex);
+		int rightChildIndex = getRightChildIndex(currentIndex);
+		while ((leftChildIndex >= 0 && rightChildIndex >= 0) && (heap[currentIndex] > heap[leftChildIndex] || heap[currentIndex] > heap[rightChildIndex])) {
+			if (heap[leftChildIndex] < heap[rightChildIndex]) {
+				swapHeapElements(currentIndex, leftChildIndex);
+				currentIndex = leftChildIndex;
+			}
+			else {
+				swapHeapElements(currentIndex, rightChildIndex);
+				currentIndex = rightChildIndex;
+			}
+			leftChildIndex = getLeftChildIndex(currentIndex);
+			rightChildIndex = getRightChildIndex(currentIndex);
+		}
 	}
 }
