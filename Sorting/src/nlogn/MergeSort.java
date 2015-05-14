@@ -16,7 +16,7 @@ public class MergeSort {
 		}
 	}
 
-	private int[] merge(int[] input, int begin, int mid, int end) {
+	private void merge(int[] input, int begin, int mid, int end) {
 		int[] temp = new int[end - begin + 1];
 		int left = begin;
 		int right = mid + 1;
@@ -44,6 +44,5 @@ public class MergeSort {
 		for (int i = 0; i < temp.length; i++) {
 			input[begin + i] = temp[i];
 		}
-		return temp;
 	}
 }
