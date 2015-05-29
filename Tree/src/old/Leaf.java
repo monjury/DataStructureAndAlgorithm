@@ -1,3 +1,4 @@
+package old;
 public class Leaf<E> {
 	
 	public boolean isLeaf(Node<E> node) {
