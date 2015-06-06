@@ -34,35 +34,23 @@ public class BinarySearchTree {
 		}
 	}
 	
-	public void inOrderTraversal(Node node) {
-		
-	}
-	
-	public void preOrderTraversal(Node node) {
-		
-	}
-	
-	public void postOrderTraversal(Node node) {
-		
-	}
-	
-	public void bfsTraversal(Node node) {
-		
-	}
-	
-	public void dfsTraversal(Node node) {
-		
-	}
-	
 	public int size(Node node) {
+		//TODO
 		return 0;
 	}
 	
 	public int height(Node node) {
-		return 0;
+		if(node == null) return 0;
+		return max(height(node.leftChild), height(node.rightChild)) + 1;
+	}
+	
+	private int max(int a, int b) {
+		return (a > b)? a : b;
 	}
 	
 	public int size() {
 		return size;
 	}
+	
+	
 }
